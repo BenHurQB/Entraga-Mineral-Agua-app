@@ -11,6 +11,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, <meta name="viewport">" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<!--Link do arquivo manifest.json-->
+		<link rel="manifest" href="manifest.json">
+
+		<!--Metas do pwa da atividade de Geraldo-->
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="msapplication-TileImage" content="AppImages/ios/144.png">
+		<meta name="msapplication-TileColor" content="#31506F">
+		<meta name="theme-color" content="#4D5360" />
+		<link rel="shortcut icon" sizes="192x192" href="AppImages/ios/192.png">
+		<link rel="shortcut icon" sizes="128x128" href="AppImages/ios/128.png">
+	  
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="PWA Teste">
+		<link rel="apple-touch-icon" href="AppImages/ios/144.png">
+		<!--<link rel="apple-touch-icon" href="touch-icon-iphone.png">-->
+		<link rel="apple-touch-icon" sizes="152x152" href="AppImages/ios/152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="AppImages/ios/180.png">
+		<link rel="apple-touch-icon" sizes="167x167" href="AppImages/ios/167.png">
+		<link rel="apple-touch-icon" sizes="192x192" href="AppImages/ios/192.png">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	  
+		<link rel="icon" type="image/png" href="AppImages/ios/144.png">
 	</head>
 	<body class="is-preload">
 
@@ -22,7 +45,7 @@
 					na palma da sua mão!!!! <a href="http://html5up.net"></a></p>
 					
 				</div>
-				<div class="image phone"><div class="inner"><img src="https://st.depositphotos.com/1005063/2453/i/450/depositphotos_24531813-stock-photo-two-big-bottles-of-water.jpg" alt="" /></div></div>
+				<div class="image phone"><div class="inner"><img src="https://st.depositphotos.com/1005063/2453/i/450/depositphotos_24531813-stock-photo-two-big-bottles-of-water.jpg" alt="foto botijoes" /></div></div>
 			</header>
 
 		<!-- One -->
@@ -42,21 +65,21 @@
 			<section id="two" class="wrapper">
 				<div class="inner alt">
 					<section class="spotlight">
-						<div class="image"><img src="https://static8.depositphotos.com/1000975/918/i/450/depositphotos_9182516-stock-photo-many-water-bottles-isolated-on.jpg" alt="" /></div>
+						<div class="image"><img src="https://static8.depositphotos.com/1000975/918/i/450/depositphotos_9182516-stock-photo-many-water-bottles-isolated-on.jpg" alt="foto produtos" /></div>
 						<div class="content">
 							<h3>Portifólio de Produtos</h3>
 							<p>Garrafas plásticas de 300 ml, 500 ml, 1 litro, 1,5 litros, 2,0 litros e 5,0 litros</p>
 						</div>
 					</section>
 					<section class="spotlight">
-						<div class="image"><img src="https://st3.depositphotos.com/12982378/18499/i/450/depositphotos_184996432-stock-photo-delivery.jpg" alt="" /></div>
+						<div class="image"><img src="https://st3.depositphotos.com/12982378/18499/i/450/depositphotos_184996432-stock-photo-delivery.jpg" alt="foto entregando agua" /></div>
 						<div class="content">
 							<h3>Entrega dos produtos</h3>
 							<p>Possuímos sistema de entrega a partir da formalização do pedido no conforto de sua residência</p>
 						</div>
 					</section>
 					<section class="spotlight">
-						<div class="image"><img src="https://st3.depositphotos.com/13349494/17508/i/450/depositphotos_175081974-stock-photo-cropped-image-woman-pouring-water.jpg" alt="" /></div>
+						<div class="image"><img src="https://st3.depositphotos.com/13349494/17508/i/450/depositphotos_175081974-stock-photo-cropped-image-woman-pouring-water.jpg" alt="foto mulher tomando agua" /></div>
 						<div class="content">
 							<h3>Hábitos de tomar água</h3>
 							<p>O ser humano precisa tomar 35 ml para cada kilograma de peso. Exemplo uma pessoa de 70 Kilos precisa de 2,5 litros de água por dia!!!</p>
@@ -399,6 +422,35 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+				if ('serviceWorker' in navigator) {
+				  navigator.serviceWorker.register('/service-worker.js').then(reg => {
+					reg.addEventListener('updatefound', () => {
+					  // A wild service worker has appeared in reg.installing!
+					  newWorker = reg.installing;
+					  newWorker.addEventListener('statechange', () => {
+						// Has network.state changed?
+						switch (newWorker.state) {
+						  case 'installed':
+							if (navigator.serviceWorker.controller) {
+							  // new update available
+							}
+							// No update available
+							break;
+						}
+					  });
+					});
+				  });
+				  let refreshing;
+				  navigator.serviceWorker.addEventListener('controllerchange', function () {
+					if (refreshing) return;
+					window.location.reload();
+					refreshing = true;
+				  });
+				}
+			  </script>
+			
 
 	</body>
 </html>
